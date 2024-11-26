@@ -263,8 +263,8 @@ decodeBtn.addEventListener('click', () => {
 
 document.addEventListener('DOMContentLoaded', () => {
     let tooltip = null;
+    let longPressTimer = null;
 
-    // function to create the tooltip
     const createTooltip = (text) => {
         tooltip = document.createElement('div');
         tooltip.className = 'tooltip';
@@ -272,41 +272,51 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.appendChild(tooltip);
     };
 
-    // function to position the tooltip
     const positionTooltip = (element) => {
         const rect = element.getBoundingClientRect();
         const tooltipRect = tooltip.getBoundingClientRect();
 
-        const top = rect.top - tooltipRect.height - 10; // position above the cursor
+        const top = rect.top - tooltipRect.height - 10; // Position above the element
         const left = rect.left + (rect.width / 2) - (tooltipRect.width / 2);
 
         tooltip.style.top = `${top}px`;
         tooltip.style.left = `${left}px`;
     };
 
-    // add event listeners to elements with data-tooltip
+    const showTooltip = (element) => {
+        const tooltipText = element.getAttribute('data-tooltip');
+        if (!tooltipText) return;
+
+        createTooltip(tooltipText);
+        positionTooltip(element);
+        tooltip.classList.add('show');
+    };
+
+    const hideTooltip = () => {
+        if (tooltip) {
+            tooltip.classList.remove('show');
+            tooltip.remove();
+            tooltip = null;
+        }
+
+        // Clear the timer when the tooltip is hidden or the touch ends
+        if (longPressTimer) {
+            clearTimeout(longPressTimer);
+            longPressTimer = null;
+        }
+    };
+
     const tooltipElements = document.querySelectorAll('[data-tooltip]');
+
     tooltipElements.forEach((element) => {
-        element.addEventListener('mouseenter', () => {
-            const tooltipText = element.getAttribute('data-tooltip');
-            createTooltip(tooltipText);
-            positionTooltip(element);
-            tooltip.classList.add('show');
-        });
+        element.addEventListener('mouseenter', () => showTooltip(element));
+        element.addEventListener('mouseleave', hideTooltip);
+    });
 
-        element.addEventListener('mouseleave', () => {
-            if (tooltip) {
-                tooltip.classList.remove('show');
-                tooltip.remove();
-                tooltip = null;
-            }
-        });
-
-        element.addEventListener('mousemove', (event) => {
-            if (tooltip) {
-                tooltip.style.top = `${event.pageY - tooltip.offsetHeight - 10}px`;
-                tooltip.style.left = `${event.pageX - tooltip.offsetWidth / 2}px`;
-            }
-        });
+    // hide tooltip if user taps elsewhere
+    document.addEventListener('touchstart', (event) => {
+        if (!event.target.closest('[data-tooltip]')) {
+            hideTooltip();
+        }
     });
 });
