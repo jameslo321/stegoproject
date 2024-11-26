@@ -9,7 +9,7 @@
 <body>
     <h1>Steganography Project</h1>
     <div class="form-container">
-        <input type="file" id="imageInput" accept="image/*">
+        <input type="file" id="imageInput" accept="image/*" title=" " data-tooltip="If no image is uploaded, a 1024x1024 white noise image will be used to encode messages.">
         <p id="maxLength" style="font-style: italic;"></p>
         <textarea id="message" rows="4" cols="50" placeholder="Enter message to encode"></textarea><br>
         <input type="password" id="password" placeholder="Enter encryption password (optional)">
@@ -28,7 +28,7 @@
 
         <div id="advancedFeatures" style="display: none;">
             <h2>Highlight Canvas</h2>
-            <canvas id="affectedPixelsCanvas" width="1024" height="1024" style="border: 1px solid black;"></canvas>
+            <canvas id="affectedPixelsCanvas" width="1024" height="1024" data-tooltip="Any pixels affected by the encoding will be highlighted in red." style="border: 1px solid black;"></canvas>
             <p id="advancedStatus"></p>
         </div>
     </div>

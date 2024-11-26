@@ -260,3 +260,53 @@ decodeBtn.addEventListener('click', () => {
         status.textContent = "Failed to decode message. Incorrect password or corrupted data.";
     }
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    let tooltip = null;
+
+    // function to create the tooltip
+    const createTooltip = (text) => {
+        tooltip = document.createElement('div');
+        tooltip.className = 'tooltip';
+        tooltip.textContent = text;
+        document.body.appendChild(tooltip);
+    };
+
+    // function to position the tooltip
+    const positionTooltip = (element) => {
+        const rect = element.getBoundingClientRect();
+        const tooltipRect = tooltip.getBoundingClientRect();
+
+        const top = rect.top - tooltipRect.height - 10; // position above the cursor
+        const left = rect.left + (rect.width / 2) - (tooltipRect.width / 2);
+
+        tooltip.style.top = `${top}px`;
+        tooltip.style.left = `${left}px`;
+    };
+
+    // add event listeners to elements with data-tooltip
+    const tooltipElements = document.querySelectorAll('[data-tooltip]');
+    tooltipElements.forEach((element) => {
+        element.addEventListener('mouseenter', () => {
+            const tooltipText = element.getAttribute('data-tooltip');
+            createTooltip(tooltipText);
+            positionTooltip(element);
+            tooltip.classList.add('show');
+        });
+
+        element.addEventListener('mouseleave', () => {
+            if (tooltip) {
+                tooltip.classList.remove('show');
+                tooltip.remove();
+                tooltip = null;
+            }
+        });
+
+        element.addEventListener('mousemove', (event) => {
+            if (tooltip) {
+                tooltip.style.top = `${event.pageY - tooltip.offsetHeight - 10}px`;
+                tooltip.style.left = `${event.pageX - tooltip.offsetWidth / 2}px`;
+            }
+        });
+    });
+});
