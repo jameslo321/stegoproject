@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Steganography Project</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Steganography Project</h1>
+    <div class="form-container">
+        <input type="file" id="imageInput" accept="image/*">
+        <p id="maxLength" style="font-style: italic;"></p>
+        <textarea id="message" rows="4" cols="50" placeholder="Enter message to encode"></textarea><br>
+        <input type="password" id="password" placeholder="Enter encryption password (optional)">
+        <div class="button-container">
+            <button id="encodeBtn">Encode Message</button>
+            <button id="downloadBtn" disabled>Download Encoded Image</button>
+            <button id="decodeBtn" disabled>Decode Message</button>
+        </div>
+        <canvas id="canvas" style="display: none;"></canvas>
+        <p id="status"></p>
+        <textarea id="decodedMessage" rows="4" cols="50" placeholder="Decoded message will appear here" readonly></textarea>
+        <div class="checkbox-container">
+            <input type="checkbox" id="advancedToggle">
+            <label for="advancedToggle">Show Advanced Details</label>
+        </div>
+
+        <div id="advancedFeatures" style="display: none;">
+            <h2>Highlight Canvas</h2>
+            <canvas id="affectedPixelsCanvas" width="1024" height="1024" style="border: 1px solid black;"></canvas>
+            <p id="advancedStatus"></p>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

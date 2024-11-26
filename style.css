@@ -1,0 +1,155 @@
+html {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin: 0;
+  padding: 10px;
+  background-color: #f4f4f9;
+}
+
+/* Container for form elements */
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+#advancedFeatures {
+    display: flex;
+    flex-direction: column; 
+    align-items: center;    
+    margin-top: 20px;       
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    white-space: nowrap;
+}
+
+/* styling for inputs, buttons, and text areas */
+input,
+textarea,
+button {
+  margin: 10px;
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+  max-width: 400px; 
+  /* Limit width on larger screens */
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #007BFF;
+  color: white;
+  cursor: pointer;
+}
+
+button:disabled {
+  background-color: #ddd;
+}
+
+/* canvas styling */
+canvas {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  /* margin: 20px 0; */
+}
+
+/* header and text content */
+h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+p {
+  font-size: 14px;
+  color: gray;
+}
+
+/* text area styling */
+textarea {
+  resize: none;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* status message and output box */
+#status {
+  font-size: 14px;
+  color: #333;
+  margin-top: 20px;
+}
+
+/* media query for larger screens */
+@media (min-width: 768px) {
+  h1 {
+    font-size: 28px;
+  }
+
+  input,
+  textarea,
+  button {
+    font-size: 18px;
+  }
+
+  canvas {
+    max-width: 60%;
+  }
+
+  .form-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #password {
+    margin-bottom: 38px;
+  }
+
+  button {
+    width: auto;
+    margin: 10px 5px;
+  }
+
+  /* ensure the buttons are aligned horizontally on desktop */
+  .button-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .button-container button {
+    margin: 0 5px;
+  }
+}
+
+/* for small devices */
+@media (max-width: 400px) {
+
+  input,
+  textarea,
+  button {
+    font-size: 14px;
+  }
+
+  h1 {
+    font-size: 22px;
+  }
+
+  canvas {
+    max-width: 80%;
+  }
+}
