@@ -89,7 +89,8 @@ function generateRandomSequence(password, length) {
         const j = Math.floor(random() * (i + 1)); // random index between 0 and i
         [sequence[i], sequence[j]] = [sequence[j], sequence[i]]; // swap
     }
-
+    
+    console.log(sequence);
     return sequence;
 }
 

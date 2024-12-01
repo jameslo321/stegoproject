@@ -11,7 +11,7 @@ body {
   background-color: #f4f4f9;
 }
 
-/* Container for form elements */
+/* container for form elements */
 .form-container {
   display: flex;
   flex-direction: column;
@@ -46,7 +46,7 @@ button {
   border-radius: 5px;
   width: 100%;
   max-width: 400px; 
-  /* Limit width on larger screens */
+  /* limit width on larger screens */
   box-sizing: border-box;
 }
 
