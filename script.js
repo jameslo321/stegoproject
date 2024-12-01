@@ -90,7 +90,6 @@ function generateRandomSequence(password, length) {
         [sequence[i], sequence[j]] = [sequence[j], sequence[i]]; // swap
     }
     
-    console.log(sequence);
     return sequence;
 }
 
