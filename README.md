@@ -1,6 +1,6 @@
 # Steganography Project
 
-A browser-based tool that hides messages inside images using LSB steganography, optional AES encryption, and password-based randomized pixel ordering. No backend required — everything runs locally in the browser.
+A browser-based tool that hides messages inside images using LSB steganography, optional AES encryption, and password-based randomized pixel ordering. No backend required, everything runs locally in the browser.
 
 ## Features
 
