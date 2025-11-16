@@ -1,5 +1,3 @@
----
-
 # Steganography Project
 
 A browser-based tool that hides messages inside images using LSB steganography, optional AES encryption, and password-based randomized pixel ordering. No backend required — everything runs locally in the browser.
@@ -53,5 +51,3 @@ script.js        – Encoding, decoding, AES, PRNG, entropy, UI logic
 ## License
 
 MIT License — feel free to use and modify.
-
----
